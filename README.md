@@ -3,23 +3,23 @@
 > A tiny CLI for making simple [Figma plugins](https://figma.com/plugin-docs/)
 
 - Write your plugin in vanilla Javascript
-- Generate a plugin UI from three separate files: `ui.html`, `ui.scss`, `ui.js`
-- Inlines image assets into the resulting HTML for the plugin UI
+- Generate a plugin HTML file from three separate files: `ui.html`, `ui.scss`, `ui.js`
+- Inline image assets into the generated HTML file
 
 ## Goals
 
 - As few files as possible
 - No `package.json` or `node_modules`
 - No TypeScript
-- No JavaScript UI framework
-- No API – just use the [Figma plugin API](https://figma.com/plugin-docs/)
+- No JavaScript UI frameworks
+- No API; just use the [Figma plugin API](https://figma.com/plugin-docs/)
 - Tiny CLI that just does one thing
 
 ## Quick start
 
 *Requires [Node.js](https://nodejs.org/).*
 
-Figmake assumes that your plugin code comprises the following 5 files:
+Figmake assumes that your plugin code comprises the following five files:
 
 ```
 main.js
