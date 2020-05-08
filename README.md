@@ -1,30 +1,35 @@
-# figmake [![npm Version](https://img.shields.io/npm/v/figmake?cacheSeconds=1800)](https://www.npmjs.com/package/figmake) [![build](https://github.com/yuanqing/figmake/workflows/build/badge.svg)](https://github.com/yuanqing/figmake/actions?query=workflow%3Abuild)
+# Figmake [![npm Version](https://img.shields.io/npm/v/figmake?cacheSeconds=1800)](https://www.npmjs.com/package/figmake) [![build](https://github.com/yuanqing/figmake/workflows/build/badge.svg)](https://github.com/yuanqing/figmake/actions?query=workflow%3Abuild)
 
-> A tiny CLI for making [Figma plugins](https://figma.com/plugin-docs/)
+> A tiny CLI for making simple [Figma plugins](https://figma.com/plugin-docs/)
+
+- Write your plugin in vanilla Javascript
+- Generate a plugin UI from three separate files: `ui.html`, `ui.scss`, `ui.js`
+- Inlines image assets into the resulting HTML for the plugin UI
 
 ## Goals
 
 - As few files as possible
-- No `package.json`, `node_modules`, Git, or TypeScript
+- No `package.json` or `node_modules`
+- No TypeScript
 - No JavaScript UI framework
-- Tiny CLI that only does one thing
 - No API – just use the [Figma plugin API](https://figma.com/plugin-docs/)
+- Tiny CLI that just does one thing
 
 ## Quick start
 
 *Requires [Node.js](https://nodejs.org/).*
 
-Figmake assumes that you have the following **five** files:
+Figmake assumes that your plugin code comprises the following 5 files:
 
 ```
 main.js
 manifest.json
-ui.css
+ui.scss
 ui.html
 ui.js
 ```
 
-(Of these, only `main.js` and [`manifest.json`](https://www.figma.com/plugin-docs/manifest/) are mandatory.)
+(Of these, only `main.js` and [`manifest.json`](https://figma.com/plugin-docs/manifest/) are mandatory.)
 
 `manifest.json` should look something like:
 
@@ -38,22 +43,29 @@ ui.js
 }
 ```
 
-To build with minification:
+To build the plugin:
 
 ```
 $ npx figmake
 ```
 
-To build with sourcemaps and without minifying:
+This will generate the following:
 
-```
-$ npx figmake -d
-```
+- **`build/main.js`** — The plugin entry point, built from `main.js`.
+- **`build/ui.html`** — The plugin UI, built from `ui.html`, `ui.scss`, and `ui.js`.
+    - `ui.scss` will be compiled down to CSS.
+    - Image assets referenced in `ui.html` and `ui.scss` will be inlined into the resulting HTML file.
 
-To watch for code changes and rebuild automatically:
+To watch for code changes and rebuild the plugin automatically:
 
 ```
 $ npx figmake -w
+```
+
+To build with minification:
+
+```
+$ npx figmake -m
 ```
 
 ## See also
