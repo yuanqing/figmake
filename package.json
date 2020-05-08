@@ -1,0 +1,58 @@
+{
+  "name": "figmake",
+  "version": "0.0.0",
+  "description": "A tiny CLI to help you make Figma plugins",
+  "keywords": [
+    "figma",
+    "figmake",
+    "figma-plugin",
+    "figma-plugins"
+  ],
+  "license": "MIT",
+  "author": "Lim Yuan Qing",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yuanqing/figmake.git"
+  },
+  "files": [
+    "src"
+  ],
+  "bin": {
+    "figmake": "src/cli.js"
+  },
+  "scripts": {
+    "fix": "prettier-standard 'src/**/*.js'",
+    "lint": "standard 'src/**/*.js'",
+    "reset": "rimraf node_modules yarn.lock && yarn install"
+  },
+  "dependencies": {
+    "chokidar": "^3.4.0",
+    "html-minifier": "^4.0.0",
+    "postcss": "^7.0.29",
+    "postcss-url": "^8.0.0",
+    "posthtml": "^0.13.0",
+    "posthtml-inline-assets": "^3.1.0",
+    "sass": "^1.26.5",
+    "tempy": "^0.5.0",
+    "terser-webpack-plugin": "^3.0.1",
+    "webpack": "^4.43.0"
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "prettier-standard": "^16.3.0",
+    "rimraf": "^3.0.2",
+    "standard": "^14.3.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "standard",
+      "prettier-standard"
+    ]
+  }
+}
