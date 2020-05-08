@@ -3,12 +3,12 @@ const htmlMinifier = require('html-minifier')
 const posthtml = require('posthtml')
 const posthtmlInlineAssets = require('posthtml-inline-assets')
 
-async function buildHtmlAsync (file, isDevelopment) {
+async function buildHtmlAsync (file, shouldMinify) {
   const html = fs.readFileSync(file, 'utf8')
   const result = await posthtml()
     .use(posthtmlInlineAssets())
     .process(html)
-  if (isDevelopment === true) {
+  if (shouldMinify === false) {
     return result.html
   }
   return htmlMinifier.minify(result.html, {

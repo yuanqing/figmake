@@ -14,7 +14,7 @@ const {
   UI_JS_FILE
 } = require('./constants')
 
-async function buildAsync (isDevelopment) {
+async function buildAsync (shouldMinify) {
   console.log('● Building...')
   const mainJsFile = path.join(SOURCE_DIRECTORY, MAIN_JS_FILE)
   if (fs.existsSync(mainJsFile) === false) {
@@ -24,14 +24,14 @@ async function buildAsync (isDevelopment) {
   await buildJsAsync(
     mainJsFile,
     path.join(process.cwd(), OUTPUT_DIRECTORY),
-    isDevelopment
+    shouldMinify
   )
   await buildUiAsync(
     path.join(SOURCE_DIRECTORY, UI_CSS_FILE),
     path.join(SOURCE_DIRECTORY, UI_HTML_FILE),
     path.join(SOURCE_DIRECTORY, UI_JS_FILE),
     OUTPUT_DIRECTORY,
-    isDevelopment
+    shouldMinify
   )
   console.log('✔ Done')
 }
@@ -41,7 +41,7 @@ async function buildUiAsync (
   htmlFile,
   jsFile,
   outputDirectory,
-  isDevelopment
+  shouldMinify
 ) {
   const uiHtmlFilePath = path.join(outputDirectory, htmlFile)
   const css =
@@ -49,19 +49,19 @@ async function buildUiAsync (
       ? `<style>${await buildCssAsync(
           cssFile,
           uiHtmlFilePath,
-          isDevelopment
+          shouldMinify
         )}</style>`
       : ''
   const html =
     fs.existsSync(htmlFile) === true
-      ? await buildHtmlAsync(htmlFile, isDevelopment)
+      ? await buildHtmlAsync(htmlFile, shouldMinify)
       : ''
   const js =
     fs.existsSync(jsFile) === true
       ? `<script>${await buildJsAsync(
           jsFile,
           tempy.directory(),
-          isDevelopment
+          shouldMinify
         )}</script>`
       : ''
   if (css === '' && html === '' && js === '') {

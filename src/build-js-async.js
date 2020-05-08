@@ -3,15 +3,15 @@ const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
 
-async function buildJsAsync (file, outputDirectory, isDevelopment) {
+async function buildJsAsync (file, outputDirectory, shouldMinify) {
   const webpackConfig = {
-    mode: isDevelopment === true ? 'development' : 'production',
+    mode: shouldMinify === true ? 'production' : 'development',
     entry: path.join(process.cwd(), file),
     output: {
       path: outputDirectory,
       filename: file
     },
-    devtool: isDevelopment ? 'inline-cheap-module-source-map' : 'none',
+    devtool: shouldMinify === true ? 'none' : 'inline-cheap-module-source-map',
     stats: 'errors-only',
     optimization: {
       minimizer: [

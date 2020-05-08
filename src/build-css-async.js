@@ -2,14 +2,14 @@ const postcss = require('postcss')
 const postcssUrl = require('postcss-url')
 const sass = require('sass')
 
-async function buildCssAsync (file, outputFilePath, isDevelopment) {
+async function buildCssAsync (file, outputFilePath, shouldMinify) {
   const css = sass.renderSync({
     file,
     outFile: outputFilePath,
-    sourceMap: isDevelopment === true,
-    sourceMapContents: isDevelopment === true,
-    sourceMapEmbed: isDevelopment === true,
-    outputStyle: isDevelopment === true ? 'expanded' : 'compressed'
+    sourceMap: shouldMinify === false,
+    sourceMapContents: shouldMinify === false,
+    sourceMapEmbed: shouldMinify === false,
+    outputStyle: shouldMinify === true ? 'compressed' : 'expanded'
   })
   const result = await postcss()
     .use(
