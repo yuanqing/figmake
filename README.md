@@ -1,4 +1,4 @@
-# figmake
+# figmake [![npm Version](https://img.shields.io/npm/v/figmake?cacheSeconds=1800)](https://www.npmjs.com/package/figmake) [![build](https://github.com/yuanqing/figmake/workflows/build/badge.svg)](https://github.com/yuanqing/figmake/actions?query=workflow%3Abuild)
 
 > A tiny CLI for making [Figma plugins](https://figma.com/plugin-docs/)
 
