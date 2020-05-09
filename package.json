@@ -21,12 +21,13 @@
     "figmake": "lib/cli.js"
   },
   "scripts": {
-    "build": "tsc --sourceMap",
+    "build": "tsc",
     "clean": "rimraf lib",
     "fix": "prettier-standard 'src/**/*.ts'",
     "lint": "standardx 'src/**/*.ts'",
-    "prepublish": "yarn run clean && tsc",
-    "reset": "rimraf node_modules yarn.lock && yarn install"
+    "prepublishOnly": "yarn run clean && yarn run build",
+    "reset": "rimraf node_modules yarn.lock && yarn install",
+    "watch": "tsc --sourceMap --watch"
   },
   "dependencies": {
     "chokidar": "^3.4.0",
