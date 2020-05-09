@@ -1,9 +1,9 @@
-const fs = require('fs')
-const htmlMinifier = require('html-minifier')
-const posthtml = require('posthtml')
-const posthtmlInlineAssets = require('posthtml-inline-assets')
+import * as fs from 'fs'
+import * as htmlMinifier from 'html-minifier'
+import posthtml from 'posthtml'
+import posthtmlInlineAssets from 'posthtml-inline-assets'
 
-async function buildHtmlAsync (file, shouldMinify) {
+export async function buildHtmlAsync (file: string, shouldMinify: boolean) {
   const html = fs.readFileSync(file, 'utf8')
   const result = await posthtml()
     .use(posthtmlInlineAssets())
@@ -20,5 +20,3 @@ async function buildHtmlAsync (file, shouldMinify) {
     removeTagWhitespace: true
   })
 }
-
-module.exports = buildHtmlAsync

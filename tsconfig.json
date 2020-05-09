@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "outDir": "lib",
+    "rootDir": "src",
+    "sourceMap": true,
+    "target": "es2020"
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

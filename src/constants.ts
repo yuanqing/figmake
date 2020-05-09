@@ -1,4 +1,4 @@
-module.exports = {
+export const constants = {
   MAIN_JS_FILE: 'main.js',
   OUTPUT_DIRECTORY: 'build',
   SOURCE_DIRECTORY: '',

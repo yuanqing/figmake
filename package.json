@@ -15,14 +15,17 @@
     "url": "git://github.com/yuanqing/figmake.git"
   },
   "files": [
-    "src"
+    "lib"
   ],
   "bin": {
-    "figmake": "src/cli.js"
+    "figmake": "lib/cli.js"
   },
   "scripts": {
-    "fix": "prettier-standard 'src/**/*.js'",
-    "lint": "standard 'src/**/*.js'",
+    "build": "tsc",
+    "clean": "rimraf lib",
+    "fix": "prettier-standard 'src/**/*.ts'",
+    "lint": "standardx 'src/**/*.ts'",
+    "publish": "yarn run clean && yarn run build",
     "reset": "rimraf node_modules yarn.lock && yarn install"
   },
   "dependencies": {
@@ -39,11 +42,26 @@
     "webpack": "^4.43.0"
   },
   "devDependencies": {
+    "@types/html-minifier": "^3.5.3",
+    "@types/postcss-url": "^8.0.1",
+    "@types/sade": "^1.6.0",
+    "@types/sass": "^1.16.0",
+    "@types/terser-webpack-plugin": "^2.2.0",
+    "@types/webpack": "^4.41.12",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
     "prettier-standard": "^16.3.0",
     "rimraf": "^3.0.2",
-    "standard": "^14.3.3"
+    "standardx": "^5.0.0",
+    "typescript": "^3.8.3"
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error"
+    }
   },
   "husky": {
     "hooks": {
@@ -51,9 +69,15 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "standard",
+    "*.ts": [
+      "standardx",
       "prettier-standard"
+    ]
+  },
+  "standardx": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
     ]
   }
 }

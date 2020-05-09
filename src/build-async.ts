@@ -1,10 +1,12 @@
-const fs = require('fs')
-const path = require('path')
-const tempy = require('tempy')
+import * as fs from 'fs'
+import * as path from 'path'
+import * as tempy from 'tempy'
 
-const buildCssAsync = require('./build-css-async')
-const buildHtmlAsync = require('./build-html-async')
-const buildJsAsync = require('./build-js-async')
+import { buildCssAsync } from './build-css-async'
+import { buildHtmlAsync } from './build-html-async'
+import { buildJsAsync } from './build-js-async'
+import { constants } from './constants'
+
 const {
   MAIN_JS_FILE,
   OUTPUT_DIRECTORY,
@@ -12,9 +14,9 @@ const {
   UI_CSS_FILE,
   UI_HTML_FILE,
   UI_JS_FILE
-} = require('./constants')
+} = constants
 
-async function buildAsync (shouldMinify) {
+export async function buildAsync (shouldMinify: boolean) {
   console.log('● Building...')
   const mainJsFile = path.join(SOURCE_DIRECTORY, MAIN_JS_FILE)
   if (fs.existsSync(mainJsFile) === false) {
@@ -37,11 +39,11 @@ async function buildAsync (shouldMinify) {
 }
 
 async function buildUiAsync (
-  cssFile,
-  htmlFile,
-  jsFile,
-  outputDirectory,
-  shouldMinify
+  cssFile: string,
+  htmlFile: string,
+  jsFile: string,
+  outputDirectory: string,
+  shouldMinify: boolean
 ) {
   const uiHtmlFilePath = path.join(outputDirectory, htmlFile)
   const css =
@@ -70,5 +72,3 @@ async function buildUiAsync (
   const result = [css, html, js].join('')
   fs.writeFileSync(uiHtmlFilePath, result)
 }
-
-module.exports = buildAsync

@@ -1,15 +1,17 @@
-const chokidar = require('chokidar')
-const path = require('path')
-const buildAsync = require('./build-async')
-const { OUTPUT_DIRECTORY } = require('./constants')
+import * as chokidar from 'chokidar'
+import * as path from 'path'
+import { buildAsync } from './build-async'
+import { constants } from './constants'
+
+const { OUTPUT_DIRECTORY } = constants
 
 const watchIgnoreRegex = new RegExp(
   `${path.basename(OUTPUT_DIRECTORY)}|node_modules`
 )
 
-function watch (shouldMinify) {
+export function watch (shouldMinify: boolean) {
   const watcher = chokidar.watch('.', {
-    ignored: function (path) {
+    ignored: function (path: string) {
       return watchIgnoreRegex.test(path)
     }
   })
@@ -20,5 +22,3 @@ function watch (shouldMinify) {
   watcher.on('ready', handleChange)
   watcher.on('change', handleChange)
 }
-
-module.exports = watch

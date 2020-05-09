@@ -1,8 +1,12 @@
-const postcss = require('postcss')
-const postcssUrl = require('postcss-url')
-const sass = require('sass')
+import * as postcss from 'postcss'
+import * as postcssUrl from 'postcss-url'
+import * as sass from 'sass'
 
-async function buildCssAsync (file, outputFilePath, shouldMinify) {
+export async function buildCssAsync (
+  file: string,
+  outputFilePath: string,
+  shouldMinify: boolean
+) {
   const css = sass.renderSync({
     file,
     outFile: outputFilePath,
@@ -21,5 +25,3 @@ async function buildCssAsync (file, outputFilePath, shouldMinify) {
     .toString()
   return result
 }
-
-module.exports = buildCssAsync
