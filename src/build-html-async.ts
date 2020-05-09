@@ -1,7 +1,8 @@
 import * as fs from 'fs'
 import * as htmlMinifier from 'html-minifier'
-import posthtml from 'posthtml'
-import posthtmlInlineAssets from 'posthtml-inline-assets'
+
+const posthtml = require('posthtml')
+const posthtmlInlineAssets = require('posthtml-inline-assets')
 
 export async function buildHtmlAsync (file: string, shouldMinify: boolean) {
   const html = fs.readFileSync(file, 'utf8')
