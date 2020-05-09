@@ -9,7 +9,7 @@ const watchIgnoreRegex = new RegExp(
   `${path.basename(OUTPUT_DIRECTORY)}|node_modules`
 )
 
-export function watch (shouldMinify: boolean) {
+export function watch (shouldMinify: boolean): void {
   const watcher = chokidar.watch('.', {
     ignored: function (path: string) {
       return watchIgnoreRegex.test(path)

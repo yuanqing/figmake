@@ -27,7 +27,7 @@
     "lint": "standardx 'src/**/*.ts'",
     "prepublishOnly": "yarn run clean && yarn run build",
     "reset": "rimraf node_modules yarn.lock && yarn install",
-    "watch": "tsc --sourceMap --watch"
+    "watch": "tsc --preserveWatchOutput --sourceMap --watch"
   },
   "dependencies": {
     "chokidar": "^3.4.0",

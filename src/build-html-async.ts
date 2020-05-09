@@ -4,7 +4,10 @@ import * as htmlMinifier from 'html-minifier'
 const posthtml = require('posthtml')
 const posthtmlInlineAssets = require('posthtml-inline-assets')
 
-export async function buildHtmlAsync (file: string, shouldMinify: boolean) {
+export async function buildHtmlAsync (
+  file: string,
+  shouldMinify: boolean
+): Promise<String> {
   const html = fs.readFileSync(file, 'utf8')
   const result = await posthtml()
     .use(posthtmlInlineAssets())

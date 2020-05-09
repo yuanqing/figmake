@@ -6,7 +6,7 @@ export async function buildCssAsync (
   file: string,
   outputFilePath: string,
   shouldMinify: boolean
-) {
+): Promise<String> {
   const css = sass.renderSync({
     file,
     outFile: outputFilePath,

@@ -7,7 +7,7 @@ export async function buildJsAsync (
   file: string,
   outputDirectory: string,
   shouldMinify: boolean
-) {
+): Promise<String> {
   const webpackConfig: webpack.Configuration = {
     mode: shouldMinify === true ? 'production' : 'development',
     entry: path.join(process.cwd(), file),
@@ -31,12 +31,8 @@ export async function buildJsAsync (
     }
   }
   return new Promise(function (resolve, reject) {
-    webpack(webpackConfig, async function (error, stats) {
-      if (stats.hasErrors() === true) {
-        reject(stats.toJson().errors.join('\n'))
-        return
-      }
-      if (error) {
+    webpack(webpackConfig, function (error) {
+      if (error !== null) {
         reject(error)
         return
       }

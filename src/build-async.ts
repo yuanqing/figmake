@@ -16,7 +16,7 @@ const {
   UI_JS_FILE
 } = constants
 
-export async function buildAsync (shouldMinify: boolean) {
+export async function buildAsync (shouldMinify: boolean): Promise<void> {
   console.log('● Building...')
   const mainJsFile = path.join(SOURCE_DIRECTORY, MAIN_JS_FILE)
   if (fs.existsSync(mainJsFile) === false) {
