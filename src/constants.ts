@@ -1,8 +1,6 @@
-export const constants = {
-  MAIN_JS_FILE: 'main.js',
-  OUTPUT_DIRECTORY: 'build',
-  SOURCE_DIRECTORY: '',
-  UI_CSS_FILE: 'ui.scss',
-  UI_HTML_FILE: 'ui.html',
-  UI_JS_FILE: 'ui.js'
-}
+export const MAIN_JS_FILE = 'main.js'
+export const OUTPUT_DIRECTORY = 'build'
+export const SOURCE_DIRECTORY = ''
+export const UI_CSS_FILE = 'ui.scss'
+export const UI_HTML_FILE = 'ui.html'
+export const UI_JS_FILE = 'ui.js'

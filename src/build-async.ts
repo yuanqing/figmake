@@ -5,16 +5,14 @@ import * as tempy from 'tempy'
 import { buildCssAsync } from './build-css-async'
 import { buildHtmlAsync } from './build-html-async'
 import { buildJsAsync } from './build-js-async'
-import { constants } from './constants'
-
-const {
+import {
   MAIN_JS_FILE,
   OUTPUT_DIRECTORY,
   SOURCE_DIRECTORY,
   UI_CSS_FILE,
   UI_HTML_FILE,
   UI_JS_FILE
-} = constants
+} from './constants'
 
 export async function buildAsync (shouldMinify: boolean): Promise<void> {
   console.log('● Building...')

@@ -1,9 +1,7 @@
 import * as chokidar from 'chokidar'
 import * as path from 'path'
 import { buildAsync } from './build-async'
-import { constants } from './constants'
-
-const { OUTPUT_DIRECTORY } = constants
+import { OUTPUT_DIRECTORY } from './constants'
 
 const watchIgnoreRegex = new RegExp(
   `${path.basename(OUTPUT_DIRECTORY)}|node_modules`
