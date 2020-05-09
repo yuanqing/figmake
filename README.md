@@ -35,7 +35,7 @@ ui.js
 
 ```json
 {
-  "name": "Hello, World",
+  "name": "My Plugin",
   "id": "314159265358979323",
   "api": "1.0.0",
   "main": "build/main.js",
