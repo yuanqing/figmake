@@ -7,6 +7,7 @@ const packageJson = require('../package.json')
 
 sade(packageJson.name, true)
   .describe(packageJson.description)
+  .version(packageJson.version)
   .option('-m, --minify', 'Build with minification', false)
   .option(
     '-w, --watch',
