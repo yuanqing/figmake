@@ -2,9 +2,9 @@
 
 > A tiny CLI for making simple [Figma plugins](https://figma.com/plugin-docs/)
 
-- Write your plugin in vanilla Javascript
-- Generate a plugin HTML file from three separate files: `ui.html`, `ui.scss`, `ui.js`
-- Inline image assets into the generated HTML file
+- Write your plugin in HTML, CSS and vanilla JavaScript
+- Stitches together `ui.html`, `ui.scss`, and `ui.js` into a single HTML file for your plugin UI
+- Automatically inlines any image assets into the generated HTML file
 
 ## Goals
 
@@ -49,10 +49,10 @@ To build the plugin:
 $ npx figmake
 ```
 
-This will generate the following:
+This will generate the following two files:
 
 - **`build/main.js`** — The plugin entry point, built from `main.js`.
-- **`build/ui.html`** — The plugin UI, built from `ui.html`, `ui.scss`, and `ui.js`.
+- **`build/ui.html`** — HTML file for the plugin UI, stitched together from `ui.html`, `ui.scss`, and `ui.js`.
     - `ui.scss` will be compiled down to CSS.
     - Image assets referenced in `ui.html` and `ui.scss` will be inlined into the resulting HTML file.
 
