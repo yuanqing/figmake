@@ -21,11 +21,11 @@
     "figmake": "lib/cli.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --sourceMap",
     "clean": "rimraf lib",
     "fix": "prettier-standard 'src/**/*.ts'",
     "lint": "standardx 'src/**/*.ts'",
-    "publish": "yarn run clean && yarn run build",
+    "prepublish": "yarn run clean && tsc",
     "reset": "rimraf node_modules yarn.lock && yarn install"
   },
   "dependencies": {
