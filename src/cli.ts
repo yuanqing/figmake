@@ -6,7 +6,7 @@ import { watch } from './watch'
 
 sade('figmake', true)
   .describe(
-    'A tiny CLI for making Figma plugins in HTML, CSS, and vanilla JavaScript'
+    'A tiny CLI for making Figma plugins with HTML, CSS, and vanilla JavaScript'
   )
   .option('-m, --minify', 'Build with minification')
   .option(

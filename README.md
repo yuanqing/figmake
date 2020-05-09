@@ -1,6 +1,6 @@
 # Figmake [![npm Version](https://img.shields.io/npm/v/figmake?cacheSeconds=1800)](https://www.npmjs.com/package/figmake) [![build](https://github.com/yuanqing/figmake/workflows/build/badge.svg)](https://github.com/yuanqing/figmake/actions?query=workflow%3Abuild)
 
-> A tiny CLI for making [Figma plugins](https://figma.com/plugin-docs/) in HTML, CSS, and vanilla JavaScript
+> A tiny CLI for making [Figma plugins](https://figma.com/plugin-docs/) with HTML, CSS, and vanilla JavaScript
 
 - Stitches together `ui.html`, `ui.scss`, and `ui.js` into a single HTML file for your plugin UI
 - Automatically inlines any image assets into the generated HTML file
