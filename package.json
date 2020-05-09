@@ -1,7 +1,7 @@
 {
   "name": "figmake",
   "version": "0.0.1",
-  "description": "A tiny CLI to help you make Figma plugins",
+  "description": "A tiny CLI for making Figma plugins in HTML, CSS, and vanilla JavaScript",
   "keywords": [
     "figma",
     "figmake",

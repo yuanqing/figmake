@@ -5,7 +5,9 @@ import { buildAsync } from './build-async'
 import { watch } from './watch'
 
 sade('figmake', true)
-  .describe('A tiny CLI to help you make Figma plugins')
+  .describe(
+    'A tiny CLI for making Figma plugins in HTML, CSS, and vanilla JavaScript'
+  )
   .option('-m, --minify', 'Build with minification')
   .option(
     '-w, --watch',
