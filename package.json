@@ -26,7 +26,7 @@
     "fix": "prettier-standard 'src/**/*.ts'",
     "lint": "standardx 'src/**/*.ts'",
     "prepare": "yarn run clean && yarn run build",
-    "reset": "rimraf node_modules yarn.lock && yarn install",
+    "reset": "yarn run clean && rimraf node_modules yarn.lock && yarn install",
     "test": "tap 'test/*.ts' --coverage-report html --coverage-report text --no-browser --reporter terse",
     "watch": "tsc --preserveWatchOutput --sourceMap --watch"
   },
