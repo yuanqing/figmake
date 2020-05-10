@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import * as sade from 'sade'
 import { buildAsync } from './build-async'
 import { watch } from './watch'
@@ -20,6 +19,7 @@ sade('figmake', true)
     }
     await buildAsync(shouldMinify)
   })
-  .example('-m')
-  .example('-w')
+  .example('')
+  .example('--minify')
+  .example('--watch')
   .parse(process.argv)
