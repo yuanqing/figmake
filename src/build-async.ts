@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import * as fs from 'fs-extra'
 import * as path from 'path'
 import * as tempy from 'tempy'
 
@@ -17,9 +17,8 @@ import {
 export async function buildAsync (shouldMinify: boolean): Promise<void> {
   console.log('● Building...')
   const mainJsFile = path.join(SOURCE_DIRECTORY, MAIN_JS_FILE)
-  if (fs.existsSync(mainJsFile) === false) {
-    console.error(`Need a ${MAIN_JS_FILE}`)
-    process.exit(1)
+  if ((await fs.pathExists(mainJsFile)) === false) {
+    throw new Error(`Need a ${MAIN_JS_FILE}`)
   }
   await buildJsAsync(
     mainJsFile,
@@ -45,7 +44,7 @@ async function buildUiAsync (
 ) {
   const uiHtmlFilePath = path.join(outputDirectory, htmlFile)
   const css =
-    fs.existsSync(cssFile) === true
+    (await fs.pathExists(cssFile)) === true
       ? `<style>${await buildCssAsync(
           cssFile,
           uiHtmlFilePath,
@@ -53,11 +52,11 @@ async function buildUiAsync (
         )}</style>`
       : ''
   const html =
-    fs.existsSync(htmlFile) === true
+    (await fs.pathExists(htmlFile)) === true
       ? await buildHtmlAsync(htmlFile, shouldMinify)
       : ''
   const js =
-    fs.existsSync(jsFile) === true
+    (await fs.pathExists(jsFile)) === true
       ? `<script>${await buildJsAsync(
           jsFile,
           tempy.directory(),
@@ -68,5 +67,5 @@ async function buildUiAsync (
     return
   }
   const result = [css, html, js].join('')
-  fs.writeFileSync(uiHtmlFilePath, result)
+  await fs.writeFile(uiHtmlFilePath, result)
 }
