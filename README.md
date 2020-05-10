@@ -10,7 +10,7 @@
 - As few files as possible
 - No `package.json` or `node_modules`
 - No TypeScript
-- No JavaScript UI frameworks
+- No JavaScript UI framework; just use [`figma-plugin-ds`](https://github.com/thomas-lowry/figma-plugin-ds)
 - No API; just use the [Figma plugin API](https://figma.com/plugin-docs/)
 - Tiny CLI that just does one thing
 
@@ -18,7 +18,7 @@
 
 *Requires [Node.js](https://nodejs.org/).*
 
-Figmake assumes that your plugin code comprises the following five files:
+Figmake assumes that your plugin code comprises the following files:
 
 ```
 main.js
@@ -58,13 +58,13 @@ This will generate the following two files:
 To watch for code changes and rebuild the plugin automatically:
 
 ```
-$ npx figmake -w
+$ npx figmake --watch
 ```
 
-To build with minification:
+To minify the output files:
 
 ```
-$ npx figmake -m
+$ npx figmake --minify
 ```
 
 ## See also
