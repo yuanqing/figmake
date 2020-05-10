@@ -18,6 +18,12 @@
 
 *Requires [Node.js](https://nodejs.org/).*
 
+First:
+
+```
+$ npm i -g figmake
+```
+
 Figmake assumes that your plugin code comprises the following files:
 
 ```
@@ -45,7 +51,7 @@ ui.js
 To build the plugin:
 
 ```
-$ npx figmake
+$ figmake
 ```
 
 This will generate the following two files:
@@ -58,13 +64,13 @@ This will generate the following two files:
 To watch for code changes and rebuild the plugin automatically:
 
 ```
-$ npx figmake --watch
+$ figmake -w
 ```
 
 To minify the output files:
 
 ```
-$ npx figmake --minify
+$ figmake -m
 ```
 
 ## See also
