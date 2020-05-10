@@ -22,11 +22,12 @@
   },
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf lib",
+    "clean": "rimraf .nyc_output coverage lib 'test/fixtures/*/build'",
     "fix": "prettier-standard 'src/**/*.ts'",
     "lint": "standardx 'src/**/*.ts'",
     "prepare": "yarn run clean && yarn run build",
     "reset": "rimraf node_modules yarn.lock && yarn install",
+    "test": "tap 'test/*.ts' --coverage-report=html --coverage-report=text --no-browser",
     "watch": "tsc --preserveWatchOutput --sourceMap --watch"
   },
   "dependencies": {
@@ -44,10 +45,12 @@
     "webpack": "^4.43.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "^8.1.0",
     "@types/html-minifier": "^3.5.3",
     "@types/postcss-url": "^8.0.1",
     "@types/sade": "^1.6.0",
     "@types/sass": "^1.16.0",
+    "@types/tap": "^14.10.0",
     "@types/terser-webpack-plugin": "^2.2.0",
     "@types/webpack": "^4.41.12",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
@@ -57,6 +60,7 @@
     "prettier-standard": "^16.3.0",
     "rimraf": "^3.0.2",
     "standardx": "^5.0.0",
+    "tap": "^14.10.7",
     "typescript": "^3.8.3"
   },
   "eslintConfig": {

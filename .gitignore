@@ -1,5 +1,8 @@
 .DS_Store
+.nyc_output
 *.log
 *.tsbuildinfo
+coverage/
 lib/
 node_modules/
+test/fixtures/*/build/
